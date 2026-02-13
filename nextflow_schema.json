@@ -1,0 +1,56 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "title": "Peptide Library Check pipeline parameters",
+    "description": "Check if peptides from experimental data are present in a FASTA library by generating tryptic peptides with configurable miss cleavages",
+    "type": "object",
+    "definitions": {
+        "plugin_parameters": {
+            "title": "Plugin parameters",
+            "description": "Parameters for the Peptide Library Check plugin.",
+            "type": "object",
+            "properties": {
+                "fasta_file": {
+                    "type": "string",
+                    "description": "FASTA file containing protein sequences to generate tryptic peptide library",
+                    "format": "file-path"
+                },
+                "file_path": {
+                    "type": "string",
+                    "description": "Tab-separated or CSV file containing experimental peptide data",
+                    "format": "file-path"
+                },
+                "min_length": {
+                    "type": "number",
+                    "description": "Minimum length of peptides to include in the library",
+                    "default": 5
+                },
+                "miss_cleavage": {
+                    "type": "number",
+                    "description": "Maximum number of missed cleavages to consider when generating tryptic peptides",
+                    "default": 2
+                },
+                "peptide_column": {
+                    "type": "string",
+                    "description": "Column containing peptide sequences to check"
+                }
+            }
+        }
+    },
+    "properties": {
+        "fasta_file": {
+            "$ref": "#/definitions/plugin_parameters/properties/fasta_file"
+        },
+        "file_path": {
+            "$ref": "#/definitions/plugin_parameters/properties/file_path"
+        },
+        "min_length": {
+            "$ref": "#/definitions/plugin_parameters/properties/min_length"
+        },
+        "miss_cleavage": {
+            "$ref": "#/definitions/plugin_parameters/properties/miss_cleavage"
+        },
+        "peptide_column": {
+            "$ref": "#/definitions/plugin_parameters/properties/peptide_column"
+        }
+    }
+}
