@@ -1,0 +1,77 @@
+# Slivka service configuration for peptide-library-check
+# Generated from Cauldron plugin format
+#
+# For file inputs that reference large databases (e.g., FASTA databases),
+# consider configuring them as environment variables pointing to shared storage:
+#   env:
+#     DATABASE_PATH: "${SLIVKA_HOME}/databases/uniref90.fasta"
+# Then reference in args as: arg: "--db=${DATABASE_PATH}"
+
+slivka-version: "0.8"
+name: peptide-library-check
+description: Check if peptides from experimental data are present in a FASTA library by generating tryptic peptides with configurable miss cleavages
+author: Cauldron Team
+version: "1.0.0"
+license: MIT
+classifiers:
+  - "Topic :: Scientific/Engineering :: Bio-Informatics"
+
+parameters:
+  file_path:
+    name: "Input Peptide File"
+    description: "Tab-separated or CSV file containing experimental peptide data"
+    type: file
+    required: true
+  peptide_column:
+    name: "Peptide Sequence Column"
+    description: "Column containing peptide sequences to check"
+    type: text
+    required: true
+  fasta_file:
+    name: "FASTA Library File"
+    description: "FASTA file containing protein sequences to generate tryptic peptide library"
+    type: file
+    required: true
+  miss_cleavage:
+    name: "Missed Cleavages"
+    description: "Maximum number of missed cleavages to consider when generating tryptic peptides"
+    type: float
+    default: 2
+    min: 0
+    max: 5
+  min_length:
+    name: "Minimum Peptide Length"
+    description: "Minimum length of peptides to include in the library"
+    type: float
+    default: 5
+    min: 1
+    max: 50
+
+command:
+  - python
+  - library_check_peptide.py
+
+args:
+  file_path:
+    arg: "--input=$(value)"
+    symlink: "file_path"
+  peptide_column:
+    arg: "--peptide-col=$(value)"
+  fasta_file:
+    arg: "--fasta=$(value)"
+    symlink: "fasta_file"
+  miss_cleavage:
+    arg: "--miss-cleavage=$(value)"
+  min_length:
+    arg: "--min-length=$(value)"
+  _output_dir:
+    arg: "--output-dir=."
+
+outputs:
+  peptide_in_library.txt:
+    path: "peptide_in_library.txt"
+
+execution:
+  runners:
+    default:
+      type: SlivkaQueueRunner

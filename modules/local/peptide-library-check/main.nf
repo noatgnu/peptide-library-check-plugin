@@ -24,6 +24,18 @@ process PEPTIDE_LIBRARY_CHECK {
     ARG_LIST=()
 
     
+    # Mapping for miss_cleavage
+    VAL="$miss_cleavage"
+    if [ -n "\$VAL" ] && [ "\$VAL" != "null" ] && [ "\$VAL" != "[]" ]; then
+        ARG_LIST+=("--miss-cleavage" "\$VAL")
+    fi
+    
+    # Mapping for min_length
+    VAL="$min_length"
+    if [ -n "\$VAL" ] && [ "\$VAL" != "null" ] && [ "\$VAL" != "[]" ]; then
+        ARG_LIST+=("--min-length" "\$VAL")
+    fi
+    
     # Mapping for file_path
     VAL="$file_path"
     if [ -n "\$VAL" ] && [ "\$VAL" != "null" ] && [ "\$VAL" != "[]" ]; then
@@ -40,18 +52,6 @@ process PEPTIDE_LIBRARY_CHECK {
     VAL="$fasta_file"
     if [ -n "\$VAL" ] && [ "\$VAL" != "null" ] && [ "\$VAL" != "[]" ]; then
         ARG_LIST+=("--fasta" "\$VAL")
-    fi
-    
-    # Mapping for miss_cleavage
-    VAL="$miss_cleavage"
-    if [ -n "\$VAL" ] && [ "\$VAL" != "null" ] && [ "\$VAL" != "[]" ]; then
-        ARG_LIST+=("--miss-cleavage" "\$VAL")
-    fi
-    
-    # Mapping for min_length
-    VAL="$min_length"
-    if [ -n "\$VAL" ] && [ "\$VAL" != "null" ] && [ "\$VAL" != "[]" ]; then
-        ARG_LIST+=("--min-length" "\$VAL")
     fi
     
     python /app/library_check_peptide.py \
