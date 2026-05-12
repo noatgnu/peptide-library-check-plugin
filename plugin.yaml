@@ -3,7 +3,7 @@ plugin:
   name: Peptide Library Check
   version: 1.0.0
   description: Check if peptides from experimental data are present in a FASTA library by generating tryptic peptides with configurable miss cleavages
-  author: Cauldron Team
+  author: "CauldronGO Team"
   category: utilities
   icon: fact_check
   repository: https://github.com/noatgnu/peptide-library-check-plugin
@@ -25,10 +25,10 @@ inputs:
 
   - name: peptide_column
     label: Peptide Sequence Column
-    type: column
+    type: column-selector
     required: true
     description: Column containing peptide sequences to check
-    source: file_path
+    sourceFile: file_path
 
   - name: fasta_file
     label: FASTA Library File
