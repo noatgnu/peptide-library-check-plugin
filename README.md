@@ -17,7 +17,7 @@
 **ID**: `peptide-library-check`  
 **Version**: 1.0.0  
 **Category**: utilities  
-**Author**: Cauldron Team
+**Author**: CauldronGO Team
 
 ## Description
 
@@ -34,7 +34,7 @@ Check if peptides from experimental data are present in a FASTA library by gener
 | Name | Label | Type | Required | Default | Visibility |
 |------|-------|------|----------|---------|------------|
 | `file_path` | Input Peptide File | file | Yes | - | Always visible |
-| `peptide_column` | Peptide Sequence Column | column | Yes | - | Always visible |
+| `peptide_column` | Peptide Sequence Column | column-selector (single) | Yes | - | Always visible |
 | `fasta_file` | FASTA Library File | file | Yes | - | Always visible |
 | `miss_cleavage` | Missed Cleavages | number (min: 0, max: 5) | No | 2 | Always visible |
 | `min_length` | Minimum Peptide Length | number (min: 1, max: 50) | No | 5 | Always visible |
@@ -50,6 +50,7 @@ Tab-separated or CSV file containing experimental peptide data
 
 Column containing peptide sequences to check
 
+- **Column Source**: `file_path`
 
 #### FASTA Library File (`fasta_file`)
 

@@ -124,7 +124,7 @@
 <p><strong>ID</strong>: <code>peptide-library-check</code><br>
 <strong>Version</strong>: 1.0.0<br>
 <strong>Category</strong>: utilities<br>
-<strong>Author</strong>: Cauldron Team</p>
+<strong>Author</strong>: CauldronGO Team</p>
 <h2 id="description">Description</h2>
 <p>Check if peptides from experimental data are present in a FASTA library by generating tryptic peptides with configurable miss cleavages</p>
 <h2 id="runtime">Runtime</h2>
@@ -160,7 +160,7 @@
 <tr>
 <td><code>peptide_column</code></td>
 <td>Peptide Sequence Column</td>
-<td>column</td>
+<td>column-selector (single)</td>
 <td>Yes</td>
 <td>-</td>
 <td>Always visible</td>
@@ -196,6 +196,9 @@
 <p>Tab-separated or CSV file containing experimental peptide data</p>
 <h4 id="peptide-sequence-column-peptide-column">Peptide Sequence Column (<code>peptide_column</code>)</h4>
 <p>Column containing peptide sequences to check</p>
+<ul>
+<li><strong>Column Source</strong>: <code>file_path</code></li>
+</ul>
 <h4 id="fasta-library-file-fasta-file">FASTA Library File (<code>fasta_file</code>)</h4>
 <p>FASTA file containing protein sequences to generate tryptic peptide library</p>
 <h4 id="missed-cleavages-miss-cleavage">Missed Cleavages (<code>miss_cleavage</code>)</h4>
