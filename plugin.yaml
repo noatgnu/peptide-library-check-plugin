@@ -59,12 +59,12 @@ inputs:
 
 execution:
   argsMapping:
-    file_path: "--input"
-    peptide_column: "--peptide-col"
-    fasta_file: "--fasta"
-    miss_cleavage: "--miss-cleavage"
-    min_length: "--min-length"
-  outputDir: "--output-dir"
+    file_path: "--file_path"
+    peptide_column: "--peptide_column"
+    fasta_file: "--fasta_file"
+    miss_cleavage: "--miss_cleavage"
+    min_length: "--min_length"
+  outputDir: "--output_folder"
   requirements:
     python: ">=3.10"
     pythonRequirementsFile: requirements.txt
