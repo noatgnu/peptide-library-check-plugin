@@ -24,39 +24,39 @@ process PEPTIDE_LIBRARY_CHECK {
     ARG_LIST=()
 
     
-    # Mapping for min_length
-    VAL="$min_length"
-    if [ -n "\$VAL" ] && [ "\$VAL" != "null" ] && [ "\$VAL" != "[]" ]; then
-        ARG_LIST+=("--min_length" "\$VAL")
-    fi
-    
     # Mapping for file_path
     VAL="$file_path"
     if [ -n "\$VAL" ] && [ "\$VAL" != "null" ] && [ "\$VAL" != "[]" ]; then
-        ARG_LIST+=("--file_path" "\$VAL")
+        ARG_LIST+=("--input" "\$VAL")
     fi
     
     # Mapping for peptide_column
     VAL="$peptide_column"
     if [ -n "\$VAL" ] && [ "\$VAL" != "null" ] && [ "\$VAL" != "[]" ]; then
-        ARG_LIST+=("--peptide_column" "\$VAL")
+        ARG_LIST+=("--peptide-col" "\$VAL")
     fi
     
     # Mapping for fasta_file
     VAL="$fasta_file"
     if [ -n "\$VAL" ] && [ "\$VAL" != "null" ] && [ "\$VAL" != "[]" ]; then
-        ARG_LIST+=("--fasta_file" "\$VAL")
+        ARG_LIST+=("--fasta" "\$VAL")
     fi
     
     # Mapping for miss_cleavage
     VAL="$miss_cleavage"
     if [ -n "\$VAL" ] && [ "\$VAL" != "null" ] && [ "\$VAL" != "[]" ]; then
-        ARG_LIST+=("--miss_cleavage" "\$VAL")
+        ARG_LIST+=("--miss-cleavage" "\$VAL")
+    fi
+    
+    # Mapping for min_length
+    VAL="$min_length"
+    if [ -n "\$VAL" ] && [ "\$VAL" != "null" ] && [ "\$VAL" != "[]" ]; then
+        ARG_LIST+=("--min-length" "\$VAL")
     fi
     
     python /app/library_check_peptide.py \
         "\${ARG_LIST[@]}" \
-        --output_folder . \
+        --output-dir . \
         \${args:-}
 
     cat <<-END_VERSIONS > versions.yml
