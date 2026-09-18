@@ -145,3 +145,7 @@ work/
 .nextflow.pid
 results/
 
+*.fasta
+*.txt
+*.csv
+.tsv
